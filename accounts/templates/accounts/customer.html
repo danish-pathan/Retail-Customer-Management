@@ -1,5 +1,8 @@
 {% extends 'accounts/main.html' %} {% block content %}
-
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+/>
 <br />
 <div class="row">
   <div class="col-md">
@@ -36,10 +39,18 @@
 </div>
 
 <br />
+<style>
+  .card-body form > div {
+    display: inline-block;
+    margin-right: 10px; /* Adjust margin as needed */
+  }
+</style>
+
 <div class="row">
   <div class="col">
     <div class="card card-body">
       <form method="get">
+        {{myFilter.form}}
         <button class="btn btn-primary" type="submit">Search</button>
       </form>
     </div>
@@ -53,7 +64,7 @@
       <table class="table table-sm">
         <tr>
           <th>Product</th>
-          <th>Category</th>
+          <th>Note</th>
           <th>Date Orderd</th>
           <th>Status</th>
           <th>Update</th>
@@ -63,7 +74,7 @@
         {% for order in orders %}
         <tr>
           <td>{{order.product}}</td>
-          <td>{{order.product.category}}</td>
+          <td>{{order.note}}</td>
           <td>{{order.date_created}}</td>
           <td>{{order.status}}</td>
           <td>
