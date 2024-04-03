@@ -1,17 +1,57 @@
 {% extends 'accounts/main.html' %} {% load static %} {% block content %}
 
-<div class="row">
-  <div class="col-md-6">
-    <div class="card card-body">
-      <form action="" method="POST">
-        {% csrf_token %} {% if form %} {{form}} {% endif %} {% if formset %}
-        {{formset.management_form}} {% for form in formset %} {{form}}
-        <hr />
-        {% endfor %} {% endif %}
-        <input class="btn btn-primary" type="submit" name="Submit" />
-      </form>
-    </div>
-  </div>
+<style>
+  /* Card Styles */
+  .card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Form Styles */
+  form {
+    margin-bottom: 0; /* Remove default margin */
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+
+  .form-control,
+  input,
+  select,
+  button {
+    /* Apply styles to input, select, and button elements */
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px; /* Add margin for spacing between elements */
+    width: calc(
+      100% - (2 * (10px + 5px))
+    ); /* Adjust width to account for padding and margin */
+  }
+
+  .btn-submit,
+  button {
+    /* Style the submit button */
+    margin-top: 20px;
+  }
+</style>
+<br />
+<div class="card card-body">
+  <form action="" method="POST">
+    {% csrf_token %} {% if form %} {{form}} {% endif %} {% if formset %}
+    {{formset.management_form}} {% for form in formset %} {{form}}
+    <hr />
+    {% endfor %} {% endif %}
+    <input class="btn btn-primary" type="submit" name="Submit" />
+  </form>
 </div>
 
 {% endblock %}

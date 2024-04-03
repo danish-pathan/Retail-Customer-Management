@@ -15,20 +15,14 @@ from .filters import OrderFilter
 from .decorators import unauthenticated_user, allowed_users, admin_only
 
 # Create your views here.
-
+@unauthenticated_user
 def registerPage(request):
-    if request.user.is_authenticated:
-        return redirect('home')
-    else:
         form = CreateUserForm()
         if request.method == 'POST':
             form = CreateUserForm(request.POST)
             if form.is_valid():
                 user = form.save()
                 username = form.cleaned_data.get('username')
-                group = Group.objects.get(name='customer')
-                user.groups.add(group)
-                Customer.objects.create(user=user,)
 
                 messages.success(request, 'Account was created for ' + username)
                 return redirect('login')
@@ -119,7 +113,7 @@ def customer(request, pk_test):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin'])
 def createOrder(request, pk):
-    OrderFormSet = inlineformset_factory(Customer, Order, fields=('product', 'status'), extra=5)
+    OrderFormSet = inlineformset_factory(Customer, Order, fields=('product', 'status', 'price'), extra=1, can_delete=False)
     customer = Customer.objects.get(id=pk)
     formset = OrderFormSet(queryset=Order.objects.none(), instance=customer)
     # form = OrderForm(initial={'customer':customer})

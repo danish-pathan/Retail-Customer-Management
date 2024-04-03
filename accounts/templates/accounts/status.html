@@ -1,3 +1,41 @@
+<style>
+  /* Card Styles */
+  .card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-header {
+    background-color: #343a40; /* Dark background for card header */
+    color: #fff; /* White text color for card header */
+  }
+
+  .card-title {
+    margin-bottom: 0; /* Remove default margin for card title */
+  }
+
+  .card-body {
+    padding: 20px; /* Add padding to the card body */
+  }
+
+  .bg-info {
+    background-color: #17a2b8 !important; /* Override default Bootstrap background color */
+  }
+
+  .bg-success {
+    background-color: #28a745 !important; /* Override default Bootstrap background color */
+  }
+
+  .bg-danger {
+    background-color: #dc3545 !important; /* Override default Bootstrap background color */
+  }
+</style>
+
 <div class="row">
   <div class="col-md-4">
     <div class="card text-center text-white bg-info mb-3" id="total-orders">
@@ -5,7 +43,7 @@
         <h5 class="card-title">Total Orders</h5>
       </div>
       <div class="card-body">
-        <h3 class="card-title">{{total_orders}}</h3>
+        <h3 class="card-title">{{ total_orders }}</h3>
       </div>
     </div>
   </div>
@@ -19,7 +57,7 @@
         <h5 class="card-title">Orders Delivered</h5>
       </div>
       <div class="card-body">
-        <h3 class="card-title">{{delivered}}</h3>
+        <h3 class="card-title">{{ delivered }}</h3>
       </div>
     </div>
   </div>
@@ -30,7 +68,7 @@
         <h5 class="card-title">Orders Pending</h5>
       </div>
       <div class="card-body">
-        <h3 class="card-title">{{pending}}</h3>
+        <h3 class="card-title">{{ pending }}</h3>
       </div>
     </div>
   </div>

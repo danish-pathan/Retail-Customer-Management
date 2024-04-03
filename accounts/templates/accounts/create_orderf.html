@@ -1,17 +1,40 @@
 {% extends 'accounts/main.html' %} {% load static %} {% block content %}
+<style>
+  .card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+  }
 
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-control {
+    border-radius: 5px;
+  }
+
+  .btn-submit {
+    margin-top: 20px;
+  }
+</style>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6 d-flex justify-content-center">
     <div class="card card-body">
       <form action="" method="POST">
-        {% csrf_token %} {% if form %} {{form}} {% endif %} {% if formset %}
-        {{fromset.management_form}} {% for form in formset %} {{form}}
+        {% csrf_token %} {% if form %}
+        <div class="form-group">{{ form.as_p }}</div>
+        {% endif %} {% if formset %} {{ formset.management_form }} {% for form
+        in formset %}
+        <div class="form-group">{{ form }}</div>
         <hr />
         {% endfor %} {% endif %}
-        <input class="btn btn-primary" type="submit" name="Submit" />
+        <button class="btn btn-primary btn-submit" type="submit">Submit</button>
       </form>
     </div>
   </div>
 </div>
-
-{% endblock %}

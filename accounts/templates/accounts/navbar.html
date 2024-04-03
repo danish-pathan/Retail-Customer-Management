@@ -1,8 +1,38 @@
 <style>
+  /* Navbar Brand */
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-left: 15px;
+  }
+
+  /* Navbar Toggler Icon */
+  .navbar-toggler-icon {
+    background-color: #fff;
+  }
+
+  /* Navbar Links */
+  .navbar-nav .nav-link {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  /* Hello Message */
   .hello-msg {
     font-size: 18px;
     color: #fff;
     margin-right: 20px;
+  }
+
+  /* Logout Link */
+  .hello-msg a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .hello-msg a:hover {
+    color: #f8f9fa; /* lighter shade of white for hover effect */
   }
 </style>
 
@@ -23,7 +53,7 @@
     <ul class="navbar-nav">
       {% if request.user.is_staff %}
       <li class="nav-item active">
-        <a class="nav-link" href="{% url 'home' %}">Dashboard </a>
+        <a class="nav-link" href="{% url 'home' %}">Dashboard</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'products' %}">Products</a>
@@ -36,6 +66,6 @@
     </ul>
   </div>
 
-  <span class="hello-msg">Hello, {{request.user}}</span>
+  <span class="hello-msg">Hello, {{ request.user }}</span>
   <span><a class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
 </nav>

@@ -1,23 +1,65 @@
 {% extends 'accounts/main.html' %} {% block content %}
+<style>
+  /* Table Styles */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px; /* Add margin at the bottom for spacing */
+  }
+
+  .table th,
+  .table td {
+    padding: 8px; /* Add padding to table cells */
+    text-align: left; /* Align text to the left within table cells */
+    border: 1px solid #dee2e6; /* Add border to table cells */
+  }
+
+  .table th {
+    background-color: #f8f9fa; /* Light background color for table headers */
+    font-weight: bold; /* Make table headers bold */
+  }
+
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f8f9fa; /* Alternate row background color */
+  }
+
+  /* Card Styles */
+  .card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-body {
+    padding: 20px; /* Add padding to card body */
+  }
+</style>
+
 <h3>User Profile</h3>
 {% include 'accounts/status.html' %}
 <div class="row">
   <div class="col-md">
     <div class="card card-body">
-      <table class="table table-sm">
+      <table class="table table-sm table-striped">
         <tr>
           <th>Product</th>
+          <th>Price</th>
           <th>Note</th>
-          <th>Date Orderd</th>
+          <th>Date Ordered</th>
           <th>Status</th>
         </tr>
 
         {% for order in orders %}
         <tr>
-          <td>{{order.product}}</td>
-          <td>{{order.note}}</td>
-          <td>{{order.date_created}}</td>
-          <td>{{order.status}}</td>
+          <td>{{ order.product }}</td>
+          <td>{{ order.price }}</td>
+          <td>{{ order.note }}</td>
+          <td>{{ order.date_created }}</td>
+          <td>{{ order.status }}</td>
         </tr>
         {% endfor %}
       </table>
